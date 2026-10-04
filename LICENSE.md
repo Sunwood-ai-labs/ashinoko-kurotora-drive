@@ -3,6 +3,7 @@
 Third-party material keeps its original terms:
 
 - Three.js and bundled supporting modules: MIT, reproduced in `dist/vendor/LICENSE`.
+- Meshoptimizer: MIT, reproduced in `dist/vendor/MESHOPT-LICENSE.md`.
 - OpenStreetMap-derived road and lake data: © OpenStreetMap contributors, Open Database License (ODbL). https://www.openstreetmap.org/copyright
 - Geospatial Information Authority of Japan terrain/elevation content: https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html
 
