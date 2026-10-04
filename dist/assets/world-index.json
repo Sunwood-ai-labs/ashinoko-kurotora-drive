@@ -1,0 +1,18 @@
+{
+  "files": [
+    "world-v4-00.glb",
+    "world-v4-01.glb",
+    "world-v4-02.glb",
+    "world-v4-03.glb",
+    "world-v4-04.glb",
+    "world-v4-05.glb",
+    "world-v4-06.glb",
+    "world-v4-07.glb",
+    "world-v4-08.glb",
+    "world-v4-09.glb",
+    "world-v4-10.glb"
+  ],
+  "revision": "full-course-v4",
+  "lengthM": 25031.45380494755,
+  "routeRefinement": "Smoothed artistic driving path on source-map topology"
+}
