@@ -1,10 +1,19 @@
 {
   "name": "ashinoko-kurotora-drive",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tools/validate.mjs",
-    "start": "python3 -m http.server 8000 --directory dist"
+    "test": "node tools/validate.mjs && npm run test:course && npm run test:loading && npm run test:graphics && npm run course:validate",
+    "start": "python3 -m http.server 8000 --directory dist",
+    "test:course": "node scripts/test-course-contract.mjs dist",
+    "test:loading": "node scripts/test-loading-interruption.mjs dist",
+    "test:graphics": "node scripts/test-graphics-error.mjs dist",
+    "course:validate": "node scripts/course-pack.mjs --assets-dir dist/assets --runtime dist/course-loader.mjs",
+    "course:checksums": "node scripts/course-pack.mjs --assets-dir dist/assets --runtime dist/course-loader.mjs --write",
+    "checksums": "node tools/checksums.mjs"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

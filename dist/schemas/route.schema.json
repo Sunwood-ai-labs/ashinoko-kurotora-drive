@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed route samples v1",
+  "type": "object",
+  "required": ["route", "station", "roadWidth", "length", "roadSurfaceOffsetM"],
+  "properties": {
+    "route": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 1000000,
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      }
+    },
+    "station": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 1000000,
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "roadWidth": {
+      "type": "number",
+      "minimum": 3,
+      "maximum": 50
+    },
+    "length": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "roadSurfaceOffsetM": {
+      "type": "number",
+      "minimum": 0
+    },
+    "startStation": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "description": "Runtime validators additionally enforce closure, matching lengths, increasing stations, 3D distances and manifest consistency."
+}

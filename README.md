@@ -1,49 +1,62 @@
 # 芦ノ湖 GT · KUROTORA DRIVE
 
-芦ノ湖周辺の実地図・標高データをもとにした、約25.03 kmの3Dブラウザドライブゲームです。KUROTORAを手動操作するか、自動走行で風景を楽しめます。
+芦ノ湖周辺の地図・標高データから制作した約25.03 kmのコースを、KUROTORAで走る3Dブラウザゲームです。手動運転と自動走行に対応しています。
 
-## 遊び方
+**[ゲームを開く](https://sunwood-ai-labs.github.io/ashinoko-kurotora-drive/)** · [検証・デプロイ状況](https://github.com/Sunwood-ai-labs/ashinoko-kurotora-drive/actions/workflows/pages.yml) · [既知の制約と検証状況](docs/VERIFICATION.md)
 
-WebGLに対応する最新のブラウザで開き、読み込み完了後に「手動で走る」または「自動走行で出発」を選びます。
+![Blenderで制作した芦ノ湖コースとKUROTORAの試写](docs/assets/blender-course-preview.png)
 
-- W / ↑：アクセル
-- S / ↓ / Space：ブレーキ
-- A / D または ← / →：ステアリング
-- R：現在位置付近のコースへ復帰
-- P：一時停止・再開
-- M または「自動走行」ボタン：自動走行の切り替え
-- 自動走行中にアクセル・ブレーキ・ステアリングを操作すると手動に戻ります
-- タッチ端末は画面のハンドル・ペダルボタンで操作できます
+*Blender制作モデルの1080p試写です。ゲーム実機スクリーンショットではありません。西側区間の制作プレビューで、低サンプルのためノイズが残っています。ブラウザ版では描画・材質・LODが異なります。*
 
-タブを離れると一時停止します。復帰後に「再開」を押してください。1周で終了します。
+## まず遊ぶ
 
-## ローカル起動
+WebGL 2が使えるブラウザで開き、読み込み後に「手動で走る」または「自動走行で出発」を選びます。アカウント登録・OpenAI認証は不要です。
 
-Python 3とNode.js 22以上を使用します。実行時の外部CDN依存はありません。
+- **W / ↑**：アクセル
+- **S / ↓ / Space**：ブレーキ
+- **A / D または ← / →**：ステアリング
+- **R**：現在位置付近の路面中央へ復帰
+- **P**：一時停止・再開
+- **M / 自動走行ボタン**：自動と手動を切り替え
+- タッチ端末：画面のハンドルとペダルで操作。操舵とペダルを同時に押せます
+
+手動入力を入れると自動走行は解除されます。別タブへ移ると一時停止し、戻ったら「再開」で続けられます。1周で終了します。
+
+**初回の配布データは約110 MB（圧縮転送前）です。** 回線や端末によって読み込みに時間がかかります。モバイル通信量に注意してください。WebGLを開始できない場合は画面に原因と確認方法が表示されます。保護機能を無効にする必要はありません。
+
+## 開発環境で起動
+
+Node.js 22以上とPython 3を使用します。ゲームとテストの外部npm依存はなく、Three.jsとMeshoptimizerはライセンス付きで同梱しています。
 
 ```sh
+git clone https://github.com/Sunwood-ai-labs/ashinoko-kurotora-drive.git
+cd ashinoko-kurotora-drive
 npm test
 npm start
 ```
 
-ブラウザで http://localhost:8000 を開きます。ファイルを直接開く方法ではなく、HTTPサーバーを使ってください。
+[http://localhost:8000](http://localhost:8000) を開きます。`file://`で直接開かず、HTTPサーバーを使ってください。`python3`がない環境では `python -m http.server 8000 --directory dist` でも起動できます。
 
-## GitHub Pages
+## ゲームとコースを分ける設計
 
-Settings → Pages → Source を GitHub Actions に設定します。mainへのpushで物理挙動・自動走行完走・配布ファイルの検査を実行し、distを公開します。相対URLなのでリポジトリ名を含むPagesのパスに対応しています。
+現在は1つのリポジトリで管理し、配信も同じGitHub Pagesから行います。ゲーム本体が操作・車体・描画を担当し、コースパックが路面・地形・植生・座標情報を担当します。コースの契約はmanifestとschemaで表し、将来コースだけを別リポジトリに切り出せる境界を用意しています。
 
-配布ファイルを編集したら、`node tools/checksums.mjs` でSHA-256一覧を更新してから `npm test` を実行してください。CIでは、公開対象と一覧の一致も検査します。
+- [構成と責務](docs/ARCHITECTURE.md)
+- [データの出典・権利・精度](docs/DATA.md)
+- [更新・テスト・配信・ロールバック](docs/MAINTENANCE.md)
+- [変更を提案する](CONTRIBUTING.md)
+- [安全性について](SECURITY.md)
 
-## モデルと精度
+配布ファイルはそのまま実行できるソースとデータです。原Blender制作ファイルを含む完全な制作環境は、このリポジトリには含みません。再生成できる範囲と必要な入力は更新手順に記載しています。
 
-地図に基づいた地形・道路のアーケード試作です。道路幅、路面、風景、車両挙動は近似であり、実道路の安全確認や正確なシミュレーションには使用できません。3Dデータの初回読み込みには時間がかかる場合があります。
+## 検証の範囲
 
-## 出典・権利
+CIでは配布ファイルのSHA-256、JavaScript構文、コースデータ、基本的な走行挙動、自動走行の完走を検査します。CI成功はブラウザ上の見た目やFPSを保証しません。
 
-- 道路・湖岸データ：© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)（ODbL）
-- 地形・標高：国土地理院。利用条件は[国土地理院コンテンツ利用規約](https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html)を参照
-- Three.js：MIT。全文はdist/vendor/LICENSE
-- Meshoptimizer：MIT。全文はdist/vendor/MESHOPT-LICENSE.md
-- KUROTORAおよび制作したビジュアル資産：権利は各権利者に帰属します。GitHubでの公開は、それらの第三者による再利用・再配布を包括的に許諾するものではありません
+公開URLと認証不要の到達を確認済みです。検証に使用したクラウドChromiumではWebGLが無効で、3D描画・実操作・実機性能の受入検証は未完了です。確認済み項目と残る項目は[検証記録](docs/VERIFICATION.md)で区別しています。
 
-ライセンスの適用範囲はLICENSE.mdを確認してください。
+## 出典・ライセンス
+
+道路・湖岸・建物の基礎データは © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)、標高は[国土地理院](https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html)に基づきます。ゲーム用に平滑化・補完した芸術的な再構成で、測量成果そのものや実道路の安全情報ではありません。
+
+Three.jsとMeshoptimizerはMITです。原コード、KUROTORA、その他の制作資産に一律のオープンソースライセンスは付与していません。公開と第三者への再利用許諾は区別しています。[権利範囲](LICENSE.md)と[詳しい出典](docs/DATA.md)を確認してください。

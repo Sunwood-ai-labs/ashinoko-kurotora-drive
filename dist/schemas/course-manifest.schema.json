@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Course pack manifest v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "courseId",
+    "packVersion",
+    "units",
+    "coordinates",
+    "route",
+    "world",
+    "vegetation",
+    "recommendedStartStationM",
+    "integrityFile"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "courseId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "packVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "units": {
+      "const": "metres"
+    },
+    "coordinates": {
+      "type": "object",
+      "required": ["route", "geometry", "placements", "routeToRenderAxes"],
+      "properties": {
+        "route": {
+          "const": "local-z-up"
+        },
+        "geometry": {
+          "const": "gltf-y-up"
+        },
+        "placements": {
+          "const": "local-z-up"
+        },
+        "routeToRenderAxes": {
+          "const": ["x", "z", "-y"]
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "required": [
+        "file",
+        "closed",
+        "distanceMetric",
+        "elevationReference",
+        "roadWidthM",
+        "sourceSurfaceOffsetAppliedM",
+        "renderSurfaceLiftM"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        },
+        "closed": {
+          "const": true
+        },
+        "distanceMetric": {
+          "const": "polyline-3d"
+        },
+        "elevationReference": {
+          "const": "road-top"
+        },
+        "roadWidthM": {
+          "type": "number",
+          "minimum": 3,
+          "maximum": 50
+        },
+        "sourceSurfaceOffsetAppliedM": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "renderSurfaceLiftM": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.1
+        }
+      }
+    },
+    "world": {
+      "type": "object",
+      "required": ["index"],
+      "properties": {
+        "index": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        },
+        "requiredGltfExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "vegetation": {
+      "type": "object",
+      "required": ["profile", "index", "library", "highDetailLibraries"],
+      "properties": {
+        "profile": {
+          "const": "broadleaf-v1"
+        },
+        "index": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        },
+        "library": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        },
+        "highDetailLibraries": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+          }
+        }
+      }
+    },
+    "recommendedStartStationM": {
+      "type": "number",
+      "minimum": 0
+    },
+    "integrityFile": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+    },
+    "attribution": {
+      "type": "object"
+    }
+  }
+}

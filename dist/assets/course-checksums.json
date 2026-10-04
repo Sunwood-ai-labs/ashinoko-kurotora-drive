@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "courseId": "ashinoko-gt",
+  "packVersion": "4.0.0",
+  "files": {
+    "broadleaf_spreading_high.glb": {
+      "bytes": 4576556,
+      "sha256": "973bdeb0e2bba105f1435d95ca28f5aaa6d466c48e3e7fb9aaa3b1e24815355a"
+    },
+    "broadleaf_upright_high.glb": {
+      "bytes": 2417956,
+      "sha256": "e85a534e4e3ba3b62fe21dff68c9f2ce19b71b3e6fba28cc997ac5e3bce56f42"
+    },
+    "broadleaf_windswept_high.glb": {
+      "bytes": 2391676,
+      "sha256": "bb60a8128aa4b37dfc70bcb1286bb07530679b6f630860f289da3a80c677437d"
+    },
+    "course-data.json": {
+      "bytes": 774097,
+      "sha256": "9bd44788d78932b87839085847e2074f08e5b0c382bb2531e3f56b58a4c72816"
+    },
+    "course-manifest.json": {
+      "bytes": 1438,
+      "sha256": "024895f6eaa451a5cc02ff270999cc4524f0b3e5d9204afea0a93f4d30f2a06b"
+    },
+    "vegetation-index.json": {
+      "bytes": 130,
+      "sha256": "69e4760d8647ed840168f193831e7a01b2c386b95efd41bdc63ce5288e8f7aad"
+    },
+    "vegetation-part-00.json": {
+      "bytes": 2866952,
+      "sha256": "1433e2c747a62fd005d5a67f0e2b47443dbff78d1d6c9f975d2787c553276a6f"
+    },
+    "vegetation-part-01.json": {
+      "bytes": 2811295,
+      "sha256": "c8486f37bfe1816c1336a5bad71f42413586cc3c615fb83def0cde7e9ede8323"
+    },
+    "vegetation-part-02.json": {
+      "bytes": 2799659,
+      "sha256": "32d28e40734f666f5eef362444dd752f8a9962935d8ab606b6f47309c1255064"
+    },
+    "vegetation-part-03.json": {
+      "bytes": 2799859,
+      "sha256": "e51a908d04cbce827f5093ce8b2ac311d74b822d75893577d5b9445eb055ce23"
+    },
+    "vegetation.glb": {
+      "bytes": 1149700,
+      "sha256": "6616ae6ef32d434e4d1f17b8d91ec519adbce67dc3c7af7805072a1c96301c31"
+    },
+    "world-index.json": {
+      "bytes": 442,
+      "sha256": "715d30fa0208f7b10f8f9eb2a03a3dd0027fa5d330c7cf39de8cd997ebe9f427"
+    },
+    "world-v4-00.glb": {
+      "bytes": 4961908,
+      "sha256": "3ffc519ad852192406c05d3170e16c4e8353d73fea7a40fd7b791d5e1e3952d0"
+    },
+    "world-v4-01.glb": {
+      "bytes": 11017864,
+      "sha256": "70f43abf7d199a7fe1c4a75ee6f93ff6906eeabb7e1d7a2bfc918fc04e23a2a9"
+    },
+    "world-v4-02.glb": {
+      "bytes": 4791432,
+      "sha256": "25f0e7bb792b06b184cd8e7cea7ceccd426c48ae6cdf0a44fd17bdc77a5b0a71"
+    },
+    "world-v4-03.glb": {
+      "bytes": 6517996,
+      "sha256": "ca1c6f66031a67700ac887c31d3c02bc00c1ab2f9f7abff6f97058b04ce54080"
+    },
+    "world-v4-04.glb": {
+      "bytes": 5871088,
+      "sha256": "b57a66237409158f6ffe2ee3075df4355e85a41dee3a1495a92d6f309c2ef6bf"
+    },
+    "world-v4-05.glb": {
+      "bytes": 5335728,
+      "sha256": "0118534f14639aa83f819ed30d516dd6297465058b199697d7f1a543e06cf424"
+    },
+    "world-v4-06.glb": {
+      "bytes": 5369736,
+      "sha256": "bb1e4ed7f4026f3e82ac39fb8cc6ec441f748fe10be1eec86f9d712a2df02724"
+    },
+    "world-v4-07.glb": {
+      "bytes": 5604016,
+      "sha256": "a29715ad595f741b9c279ed0cd3b407b2c430c09257f58af662ca290450c396f"
+    },
+    "world-v4-08.glb": {
+      "bytes": 5933152,
+      "sha256": "833c3a46b37126b7af973e797e3ef3e09cd01646c4a05c7dc3aa8c43a5fbb066"
+    },
+    "world-v4-09.glb": {
+      "bytes": 6358172,
+      "sha256": "3c2ce1b5eeafdc4d06f5e9a63b60a92c1b3d0b68af8cc078bd25daaddb00256a"
+    },
+    "world-v4-10.glb": {
+      "bytes": 1521056,
+      "sha256": "1f320edbd183a7cd186701db35617d69362b73c21eba6705f5d7a57798458841"
+    },
+    "world-v4-windows.glb": {
+      "bytes": 12398792,
+      "sha256": "588f328d28e9be26c9fff5cba5aa3dd43d991a2d0e8c5dd4e419bde414330b4a"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "courseId": "ashinoko-gt",
+  "packVersion": "4.0.0",
+  "title": "芦ノ湖 GT",
+  "units": "metres",
+  "coordinates": {
+    "route": "local-z-up",
+    "geometry": "gltf-y-up",
+    "placements": "local-z-up",
+    "routeToRenderAxes": ["x", "z", "-y"]
+  },
+  "route": {
+    "file": "course-data.json",
+    "closed": true,
+    "distanceMetric": "polyline-3d",
+    "elevationReference": "road-top",
+    "roadWidthM": 7,
+    "sourceSurfaceOffsetAppliedM": 0.14,
+    "renderSurfaceLiftM": 0.014
+  },
+  "world": {
+    "index": "world-index.json",
+    "requiredGltfExtensions": ["EXT_meshopt_compression"]
+  },
+  "vegetation": {
+    "profile": "broadleaf-v1",
+    "index": "vegetation-index.json",
+    "library": "vegetation.glb",
+    "highDetailLibraries": [
+      "broadleaf_spreading_high.glb",
+      "broadleaf_upright_high.glb",
+      "broadleaf_windswept_high.glb"
+    ]
+  },
+  "recommendedStartStationM": 1250,
+  "attribution": {
+    "sources": [
+      {
+        "name": "OpenStreetMap contributors",
+        "url": "https://www.openstreetmap.org/copyright"
+      },
+      {
+        "name": "国土地理院",
+        "url": "https://maps.gsi.go.jp/development/ichiran.html"
+      }
+    ],
+    "description": "Artistic reconstruction from map topology and elevation. The display route is smoothed; it is not surveyed or an officially verified fictional circuit."
+  },
+  "integrityFile": "course-checksums.json"
+}

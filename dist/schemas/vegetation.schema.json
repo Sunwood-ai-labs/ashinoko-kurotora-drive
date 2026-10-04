@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vegetation placement shard v1",
+  "type": "object",
+  "required": ["sets"],
+  "properties": {
+    "sets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "prototypes",
+          "count",
+          "position",
+          "scale",
+          "yaw",
+          "variant"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "prototypes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "scale": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "yaw": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "variant": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "Each per-instance array must equal count. Variant indices must address the declared prototype list. Rotation is Blender Z yaw, matching render Y yaw."
+}
