@@ -1,0 +1,15 @@
+ASHINOKO GT — KUROTORA DRIVE
+
+KUROTORA vehicle and the Ashinoko scene are the project owner's supplied assets.
+The road network, lake shoreline and building footprints derive from OpenStreetMap.
+© OpenStreetMap contributors — https://www.openstreetmap.org/copyright
+Elevation data derives from Geospatial Information Authority of Japan (国土地理院).
+https://maps.gsi.go.jp/development/ichiran.html
+
+This project is an approximate artistic reconstruction for an arcade driving game.
+The display route has been smoothed for driving; scenery, dimensions and materials include artistic assumptions.
+It is not a surveyed road model or an officially verified fictional racing circuit.
+
+Three.js — MIT License. The complete license is in vendor/LICENSE.
+Meshoptimizer — MIT License. The complete license is in vendor/MESHOPT-LICENSE.md.
+Its compression is used without quantization: decoded geometry buffers retain exact original bytes.
