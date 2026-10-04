@@ -3,14 +3,25 @@
 ## 普段の変更
 
 1. 変更前のcommitと対象を確認する
-2. ゲームの操作・描画はゲーム側、地形・風景・配置はコース側で変更する
+2. ゲームの操作・描画はこのrepo、地形・風景・配置・契約は[コースrepo](https://github.com/Sunwood-ai-labs/ashinoko-course-data)で変更する
 3. コース契約を変更した場合はmanifestの版・schema・読込テストを揃える
-4. コース変更時は `npm run course:checksums`、続けて `npm run checksums` で配布チェックサムを更新する
+4. コース変更時はコースrepoでパック・release checksumと検証を終え、下記の取込手順を実行する。ゲーム側だけでコースchecksumを更新して変更を隠さない
 5. `npm test` を実行する
 6. HTTPサーバーで実ブラウザを開き、下記の操作と描画を確認する
 7. 差分に秘密、個人情報、内部パス、原ログ、未許諾素材がないことを確認してPRを出す
 
 チェックサムを更新するだけでは検証になりません。意図したデータ変更であることを先に確かめてください。
+
+## コースrepoから取り込む
+
+```sh
+npm run course:import -- --source ../ashinoko-course-data
+npm test
+```
+
+既定は現在の `course.lock.json` と同じreleaseだけを許可します。新しい版の内容・出典・権利・コードをレビューして採用する場合は、`npm run course:import -- --source ../ashinoko-course-data --accept-update` を実行し、`npm run checksums`、`npm test` の順に検証してください。コースrepoの完全export先も指定できます。
+
+importは全ソースのSHA-256・サイズ・path・版・symlinkを確認した後に書き込み、外部通信や取り込んだコードの実行をしません。I/Oエラー時は公開せず差分を確認し、同じ検証済み入力で再実行してください。不要になった旧ファイルは自動削除しないため別途レビューします。snapshot、lock、配布checksumを一緒にcommitします。
 
 ## データの再生成
 
@@ -26,7 +37,7 @@ node scripts/course-pack.mjs --assets-dir dist/assets --runtime dist/course-load
 node scripts/course-pack.mjs --assets-dir /tmp/ashinoko-course-export --runtime dist/course-loader.mjs
 ```
 
-export先には新しい空フォルダーを指定します。車体を含めない24のパック資源と、そのSHA-256一覧を書き出します。所有者の原資産に新しい再配布許諾を与える操作ではありません。別リポジトリに移す場合は、出典・権利文書と契約schemaも一緒に管理してください。
+export先には新しい空フォルダーを指定します。車体を含めない24のパック資源と、そのSHA-256一覧を書き出します。所有者の原資産に新しい再配布許諾を与える操作ではありません。このコマンドはassetsだけの互換exportです。独立repoへ渡す完全な32資源のexportは、コースrepoの `npm run release:export -- ../ashinoko-course-export` を使ってください。
 
 ## 手動の受入確認
 

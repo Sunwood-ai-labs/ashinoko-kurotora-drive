@@ -10,6 +10,7 @@ for(const [rel,expected] of Object.entries(checksums)) {
   assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,rel))).digest('hex'),expected,`${rel}: distribution checksum mismatch`);
 }
 const files = fs.readdirSync(root,{recursive:true}).filter(p => fs.statSync(path.join(root,p)).isFile());
+assert.deepEqual(Object.keys(checksums).sort(), [...files].sort(), 'Distribution checksum inventory must cover every served file');
 for (const rel of files) {
   const p=path.join(root,rel);
   assert(fs.statSync(p).size < 25*1024*1024,`${rel}: exceeds web upload limit`);

@@ -1,5 +1,9 @@
 # ゲームとコースの境界
 
+## 管理単位
+
+ゲーム正本は[ashinoko-kurotora-drive](https://github.com/Sunwood-ai-labs/ashinoko-kurotora-drive)、コース正本は[ashinoko-course-data](https://github.com/Sunwood-ai-labs/ashinoko-course-data)です。ゲームの `dist/` にあるコースは固定済みの配布用コピーです。分離前のcommit履歴はゲームrepoに残し、コースのPROVENANCE.jsonから来歴を辿れます。
+
 ## 配布単位
 
 `dist/` はビルド済みバンドル専用のディレクトリではなく、そのまま配信するES Modules・HTML・CSS・GLB・JSONの集合です。フレームワークや外部CDNを必要としません。GitHub Pagesへはこのディレクトリだけを送ります。
@@ -21,7 +25,7 @@
 
 ## 契約の版と座標
 
-ゲーム版は `package.json` の0.2.0、コースは `courseId: ashinoko-gt` / `packVersion: 4.0.0`、契約schemaは1として別々に管理します。schemaは `dist/schemas/` にあります。
+ゲーム版は `package.json` の0.3.0、コースは `courseId: ashinoko-gt` / `packVersion: 4.0.0`、契約schemaは1として別々に管理します。schemaは `dist/schemas/` にあります。
 
 単位はメートル。ルート・配置はlocal Z-up、GLBはglTF Y-upで、表示への変換は `[x, z, -y]` です。距離は閉ループの3D折れ線距離、道路幅は7m、開始位置の推奨値は1250mです。ルートは既に路面高へ補正済みのため、元の+.14mを二重に加えません。描画用路面lift .014mは別の量です。
 
@@ -36,12 +40,13 @@
 5. 描画へ位置・向き・速度を渡し、LODと追従カメラを更新
 6. タブ離脱、一時停止、完走、描画コンテキスト喪失で走行を停止
 
-## 将来コースを別リポジトリへ移す場合
+## 独立コースの取り込み
 
-- パックに属するデータ、schema、出典、チェックサムをまとまった版として管理する
+- コースrepoでパックに属するデータ、純粋な契約、schema、出典、チェックサムをまとまった版として管理する
 - 車体・UI・物理エンジンをコース側へ混ぜない
 - 読込契約に互換性がない変更では契約版を上げ、ゲーム側の対応をテストする
 - 別originで配信する場合はCORS、許可URL、相対参照、キャッシュ更新を設計する。現在の同一origin・安全な相対pathの前提を勝手に緩めない
-- ゲーム側でパックの版とチェックサムを固定してから公開する
+- ゲームの `course.lock.json` でrelease一覧そのものと32ファイルのSHA-256を固定し、`scripts/sync-course.mjs` でレビュー済みのローカルsnapshotを取り込む
+- `npm run course:pin` と配布全体のチェックサムをCIで検査し、同一originで同梱配信する。ローカルHTTP起動はネット接続を要求しないが、PWAのオフライン再訪保証ではない
 
 現在、任意の第三者コースURLを入力して実行する機能は提供していません。

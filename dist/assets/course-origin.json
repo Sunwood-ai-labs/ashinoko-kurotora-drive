@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "courseId": "ashinoko-gt",
+  "packVersion": "4.0.0",
+  "extractedFrom": {
+    "repository": "https://github.com/Sunwood-ai-labs/ashinoko-kurotora-drive",
+    "commit": "cb3914e4f81227be7a5b3b1e0a76adbb44a0e241",
+    "assetPath": "dist/assets",
+    "extractedOn": "2026-10-04",
+    "method": "Lossless copy of 24 manifest-linked resources, integrity inventory, pure data contract and schemas; vehicle excluded. Original repository history is retained."
+  },
+  "sources": [
+    {"name":"OpenStreetMap contributors","url":"https://www.openstreetmap.org/copyright","use":"Road, lake and building base topology","license":"ODbL","acquiredAt":null},
+    {"name":"Geospatial Information Authority of Japan","url":"https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html","use":"Terrain and elevation basis","acquiredAt":null},
+    {"name":"Project-owner-provided scene assets","use":"Original roadside geometry, vegetation and artwork","license":"No additional blanket permission granted by this extraction"}
+  ],
+  "limitations": [
+    "Original map acquisition dates and identifiers are not completely recoverable from the published snapshot.",
+    "Original Blender files and the full source-data workset are not included. Export repackages the published pack; it does not recreate geometry.",
+    "Artistic reconstruction and approximate road widths, smoothing, scenery and elevations are unsuitable for navigation, surveying or safety decisions.",
+    "No browser-rendering, gameplay or frame-rate signoff is implied by structural checks."
+  ]
+}
