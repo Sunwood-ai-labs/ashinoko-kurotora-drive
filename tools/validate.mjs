@@ -1,9 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
 import {makeTrack, initialState, step, autoInput} from '../dist/physics.mjs';
 const root = path.resolve('dist');
+const checksums=JSON.parse(fs.readFileSync('tools/distribution-checksums.json','utf8'));
+for(const [rel,expected] of Object.entries(checksums)) {
+  assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,rel))).digest('hex'),expected,`${rel}: distribution checksum mismatch`);
+}
 const files = fs.readdirSync(root,{recursive:true}).filter(p => fs.statSync(path.join(root,p)).isFile());
 for (const rel of files) {
   const p=path.join(root,rel);
