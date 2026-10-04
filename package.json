@@ -4,11 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tools/validate.mjs && npm run test:course && npm run test:loading && npm run test:graphics && npm run course:validate && npm run course:pin && npm run test:import && npm run docs:check",
+    "test": "node tools/validate.mjs && npm run test:course && npm run test:loading && npm run test:graphics && npm run test:detail && npm run course:validate && npm run course:pin && npm run test:import && npm run docs:check",
     "start": "python3 -m http.server 8000 --directory dist",
     "test:course": "node scripts/test-course-contract.mjs dist",
     "test:loading": "node scripts/test-loading-interruption.mjs dist",
     "test:graphics": "node scripts/test-graphics-error.mjs dist",
+    "test:detail": "node scripts/test-detail-filter.mjs dist",
     "course:validate": "node scripts/course-pack.mjs --assets-dir dist/assets --runtime dist/course-loader.mjs",
     "course:checksums": "node scripts/course-pack.mjs --assets-dir dist/assets --runtime dist/course-loader.mjs --write",
     "checksums": "node tools/checksums.mjs",

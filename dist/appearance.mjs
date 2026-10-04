@@ -1,4 +1,13 @@
 import * as THREE from "three";
+
+// Procedural noise is not texture sampled, so it has no automatic mip filtering.
+// Fade sub-pixel detail to its mean instead of letting it sparkle as the camera moves.
+const detailFilterGLSL = `
+ float detailNoiseWeight(float footprint) {
+   return 1.0 - smoothstep(0.25, 1.0, footprint);
+ }
+`;
+
 export function terrainMaterial(mat) {
   mat = mat.clone();
   mat.color.setHex(0x889063);
@@ -18,21 +27,23 @@ export function terrainMaterial(mat) {
         "#include <common>",
         `#include <common>
  varying vec3 vTerrainWorld;
+ ${detailFilterGLSL}
  float hsh(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
  float noise2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hsh(i),hsh(i+vec2(1,0)),f.x),mix(hsh(i+vec2(0,1)),hsh(i+vec2(1,1)),f.x),f.y);}
+ float filteredTerrainNoise(vec2 p){float footprint=max(length(dFdx(p)),length(dFdy(p)));return mix(.5,noise2(p),detailNoiseWeight(footprint));}
  `,
       )
       .replace(
         "#include <color_fragment>",
         `#include <color_fragment>
- vec2 q=vTerrainWorld.xz;float large=noise2(q*.012),med=noise2(q*.11),fine=noise2(q*3.8);
+ vec2 q=vTerrainWorld.xz;float large=noise2(q*.012),med=noise2(q*.11),fine=filteredTerrainNoise(q*3.8);
  vec3 turf=mix(vec3(.055,.105,.022),vec3(.19,.23,.073),large);
  turf=mix(turf,vec3(.17,.155,.10),smoothstep(.55,.88,med)*.42);
  diffuseColor.rgb=turf*(.78+.28*fine+.18*med);
  `,
       );
   };
-  mat.customProgramCacheKey = () => "terrain-v4";
+  mat.customProgramCacheKey = () => "terrain-v4-filtered-1";
   return mat;
 }
 export function gritTexture() {
@@ -141,17 +152,20 @@ export function surfaceMaterial(source) {
         "#include <common>",
         `#include <common>
  varying vec3 vSurfaceWorld;
+ ${detailFilterGLSL}
  float surfaceHash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
  `,
       )
       .replace(
         "#include <color_fragment>",
         `#include <color_fragment>
- float materialGrain=surfaceHash(floor(vSurfaceWorld*34.));
+ vec3 grainPosition=vSurfaceWorld*34.;
+ float grainFootprint=max(length(dFdx(grainPosition)),length(dFdy(grainPosition)));
+ float materialGrain=mix(.5,surfaceHash(floor(grainPosition)),detailNoiseWeight(grainFootprint));
  diffuseColor.rgb*=.84+.23*materialGrain;
  `,
       );
   };
-  mat.customProgramCacheKey = () => "surface-grain-v4";
+  mat.customProgramCacheKey = () => "surface-grain-v4-filtered-1";
   return mat;
 }
