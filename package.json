@@ -1,0 +1,10 @@
+{
+  "name": "ashinoko-kurotora-drive",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tools/validate.mjs",
+    "start": "python3 -m http.server 8000 --directory dist"
+  }
+}
