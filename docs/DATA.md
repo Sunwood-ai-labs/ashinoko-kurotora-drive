@@ -37,4 +37,4 @@ GLBはMeshoptで圧縮しています。現在の制作工程では量子化を�
 
 ## プレビュー画像
 
-`docs/assets/blender-course-preview.png` はBlenderで撮影した制作モデルの試写です。ブラウザ実行の証拠、FPSの測定、ゲーム画面のスクリーンショットとしては扱いません。
+`docs/assets/blender-course-preview.jpg` はBlenderで撮影した制作モデルの試写です。ブラウザ実行の証拠、FPSの測定、ゲーム画面のスクリーンショットとしては扱いません。

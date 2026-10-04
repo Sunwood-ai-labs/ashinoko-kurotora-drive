@@ -6,9 +6,36 @@
 
 **[ゲームを開く](https://sunwood-ai-labs.github.io/ashinoko-kurotora-drive/)** · [検証・デプロイ状況](https://github.com/Sunwood-ai-labs/ashinoko-kurotora-drive/actions/workflows/pages.yml) · [既知の制約と検証状況](docs/VERIFICATION.md)
 
-![Blenderで制作した芦ノ湖コースとKUROTORAの試写](docs/assets/blender-course-preview.png)
+![Blenderで制作した芦ノ湖コースとKUROTORAの試写](docs/assets/blender-course-preview.jpg)
 
 *Blender制作モデルの1080p試写です。ゲーム実機スクリーンショットではありません。西側区間の制作プレビューで、低サンプルのためノイズが残っています。ブラウザ版では描画・材質・LODが異なります。*
+
+## 🏞️ 8つの視点で見るコース
+
+湖を見渡す全景から、ガードレールのボルトまで。表紙を含む8枚で、景色・起伏・沿道の作り込みを紹介します。
+
+すべて実際のBlender制作モデルのレンダーです。ゲーム実機スクリーンショットではありません。地形ベース・v3詳細区間・v4全周確認を各キャプションで区別しています。元の解像度を保ち、大きい画像は配信用JPEGにしています。[画像の出典と撮影メモ](docs/GALLERY.md)。
+
+![湖と山並みを一望 — Blender](docs/assets/gallery/lake-panorama.jpg)
+
+**湖と山並みを一望**<br>水面、湖を囲む稜線、斜面を縫う道。コースの舞台を広い視点で。<br><sub>地形ベース制作段階の全景</sub>
+
+| | |
+|:---|:---|
+| ![森へ登るS字カーブ — Blender](docs/assets/gallery/skyline-curve.jpg) | ![路肩まで作り込む — Blender](docs/assets/gallery/roadside-detail.jpg) |
+| **森へ登るS字カーブ**<br>外側から見て分かる道路の曲線、登り勾配、森の境界。<br><sub>v3・西側詳細区間</sub> | **路肩まで作り込む**<br>波形ガードレールのボルト、側溝、石積み、足元の草を近くから。<br><sub>v3・西側詳細区間</sub> |
+
+| | |
+|:---|:---|
+| ![木々に沿うカーブ — Blender](docs/assets/gallery/forest-bend-v4.png) | ![木立の先に湖 — Blender](docs/assets/gallery/lake-road-v4.png) |
+| **木々に沿うカーブ**<br>低い視点で、山肌を回り込む路面とガードレールの流れを見る。<br><sub>v4・6 km地点の確認視点</sub> | **木立の先に湖**<br>道の先が開け、木々の間に青い水面が見える区間。<br><sub>v4・12 km地点の確認視点</sub> |
+
+| | |
+|:---|:---|
+| ![建物のある坂道へ — Blender](docs/assets/gallery/town-climb-v4.png) | ![一周の形をつかむ — Blender](docs/assets/gallery/course-overview.jpg) |
+| **建物のある坂道へ**<br>窓のある建物と上り坂が現れ、山間の道から景色が切り替わる。<br><sub>v4・21 km地点の確認視点</sub> | **一周の形をつかむ**<br>湖・地形・閉ループの関係を、強調したルート線で見渡す。<br><sub>地形ベースの旧25.04 km計画図・現ルートは25.03 km</sub> |
+
+標高：国土地理院。地図由来の形状：© OpenStreetMap contributors。芸術的な再構成です。[出典・権利の詳細](docs/DATA.md)。
 
 ## 🎮 まず遊ぶ
 
