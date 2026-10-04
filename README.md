@@ -1,6 +1,6 @@
 # 芦ノ湖 GT · KUROTORA DRIVE
 
-芦ノ湖周辺の実地図・標高データをもとにした、約25.04 kmの3Dブラウザドライブゲームです。KUROTORAを手動操作するか、自動走行で風景を楽しめます。
+芦ノ湖周辺の実地図・標高データをもとにした、約25.03 kmの3Dブラウザドライブゲームです。KUROTORAを手動操作するか、自動走行で風景を楽しめます。
 
 ## 遊び方
 
@@ -32,6 +32,8 @@ npm start
 
 Settings → Pages → Source を GitHub Actions に設定します。mainへのpushで物理挙動・自動走行完走・配布ファイルの検査を実行し、distを公開します。相対URLなのでリポジトリ名を含むPagesのパスに対応しています。
 
+配布ファイルを編集したら、`node tools/checksums.mjs` でSHA-256一覧を更新してから `npm test` を実行してください。CIでは、公開対象と一覧の一致も検査します。
+
 ## モデルと精度
 
 地図に基づいた地形・道路のアーケード試作です。道路幅、路面、風景、車両挙動は近似であり、実道路の安全確認や正確なシミュレーションには使用できません。3Dデータの初回読み込みには時間がかかる場合があります。
@@ -41,6 +43,7 @@ Settings → Pages → Source を GitHub Actions に設定します。mainへの
 - 道路・湖岸データ：© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)（ODbL）
 - 地形・標高：国土地理院。利用条件は[国土地理院コンテンツ利用規約](https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html)を参照
 - Three.js：MIT。全文はdist/vendor/LICENSE
+- Meshoptimizer：MIT。全文はdist/vendor/MESHOPT-LICENSE.md
 - KUROTORAおよび制作したビジュアル資産：権利は各権利者に帰属します。GitHubでの公開は、それらの第三者による再利用・再配布を包括的に許諾するものではありません
 
 ライセンスの適用範囲はLICENSE.mdを確認してください。
